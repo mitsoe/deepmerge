@@ -4,7 +4,7 @@ import { IonicModule, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { MyApp } from './app.component';
+import { MyApp, TestObject, NestedTestObject } from './app.component';
 import {
   PlatformMock,
   StatusBarMock,
@@ -41,5 +41,11 @@ describe('MyApp Component', () => {
   it('should have two pages', () => {
     expect(component.pages.length).toBe(2);
   });
+
+  it('should have correct object', () => {
+    let result: TestObject = component.assignObject();
+    expect(result.nested.id).toBe(5);
+    expect(result.nested.bla).toBe('bla');
+  })
 
 });
